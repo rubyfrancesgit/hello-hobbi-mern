@@ -1,0 +1,44 @@
+.nav {
+    width: 100vw;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    box-shadow: 0px 2px 5px rgb(207, 207, 207);
+
+    &__heading {
+        @include logo-heading;
+    }
+
+    &__p {
+        @include p-text;
+    }
+
+    &__user-div {
+        display: flex;
+        align-items: center;
+    }
+
+    &__profile-img {
+        width: 4vh;
+        height: 4vh;
+        border-radius: 360px;
+        margin-right: 1rem;
+    }
+
+    &__btn-div {
+        display: flex;
+    }
+
+    &__login-btn {
+        @include outline-btn;
+        margin-right: .5rem;
+    }
+
+    &__register-btn {
+        @include solid-btn;
+        margin-left: .5rem;
+    }
+}
