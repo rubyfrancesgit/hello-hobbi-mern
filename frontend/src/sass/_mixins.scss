@@ -63,7 +63,7 @@
 @mixin outline-btn {
     @include btn-beginnings;
     border: 1px solid $signature-colour;
-    color: $signature-colour;
+    color: $signature-colour !important;
     background-color: white;
 }
 

@@ -23,7 +23,7 @@ function Nav() {
       <Link to="/" className="nav__heading">Hello Hobbi</Link>
 
       <div className="nav__btn-div">
-          <button className="nav__login-btn" onClick={launchLoginModal}>Login</button>
+          <Link to="/login" className="nav__login-btn">Login</Link>
           <Link to="/sign-up" className="nav__register-btn">Register</Link>
       </div>
     </div>
