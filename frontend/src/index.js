@@ -5,10 +5,12 @@ import reportWebVitals from './reportWebVitals';
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from 'react-redux';
 import userReduder from './features/user';
+import modalClassesReducer from './features/modalClasses';
 
 const store = configureStore({
   reducer: {
     user: userReduder,
+    modalClasses: modalClassesReducer
   },
 });
 

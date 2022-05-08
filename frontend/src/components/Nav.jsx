@@ -1,31 +1,49 @@
-import React, { useState, useContext } from 'react'
-// import { GlobalContext } from '../context/GlobalContext';
-// import LoginForm from '../components/LoginForm';
+import React, { useState, useContext } from 'react';
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
+import LoginForm from './LoginForm';
+import { setModalClasses } from '../features/modalClasses';
 
 function Nav() {
-  // const { user, setSelectedUser, loginModalClasses, setLoginModalClasses, modalBackgroundClasses, setModalBackgroundClasses } = useContext(GlobalContext);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user.value);
+  const modalClasses = useSelector((state) => state.modalClasses.value);
 
   let navigate = useNavigate();
 
   function launchLoginModal() {
-      // setModalBackgroundClasses("modal-background");
-      // setLoginModalClasses("modal");
+    dispatch(setModalClasses({loginModalClasses: "modal", modalBackgroundClasses: "modal-background"}));
   } 
 
   function closeModal() {
-      // setModalBackgroundClasses("modal-background hide");
-      // setLoginModalClasses("modal hide");
+    dispatch(setModalClasses({loginModalClasses: "hide", modalBackgroundClasses: "hide"}));
   }
 
   return (
     <div className="nav">
       <Link to="/" className="nav__heading">Hello Hobbi</Link>
 
+      
+
+      {user && 
+      <div className="nav__user-div">
+        <button className="nav__outline-btn">Teach a hobbi</button>
+        <img className="nav__profile-img" src={user.profilePictureLink} alt="Your profile picture" />
+
+        <p className="nav__p">{user.name}</p>
+      </div>}
+
+      {!user && 
       <div className="nav__btn-div">
-          <Link to="/login" className="nav__login-btn">Login</Link>
-          <Link to="/sign-up" className="nav__register-btn">Register</Link>
+        <button className="nav__outline-btn" onClick={launchLoginModal}>Login</button>
+        <Link to="/sign-up" className="nav__solid-btn">Register</Link>
+      </div>}
+
+      <div className={modalClasses.loginModalClasses}>
+          <LoginForm />
       </div>
+
+      <div className={modalClasses.modalBackgroundClasses} onClick={closeModal}></div>
     </div>
   )
 }

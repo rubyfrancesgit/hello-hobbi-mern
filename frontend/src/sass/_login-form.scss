@@ -1,8 +1,6 @@
 .login-form {
-    width: 100vw;
-    height: 90vh;
-    @include center;
-    flex-direction: column;
+    // @include center;
+    // flex-direction: column;
 
     &__heading {
         @include heading;

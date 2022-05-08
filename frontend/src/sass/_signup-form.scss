@@ -1,8 +1,8 @@
 .signup-form {
-    width: 100vw;
-    height: 90vh;
     @include center;
     flex-direction: column;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 
     &__form {
         @include center;

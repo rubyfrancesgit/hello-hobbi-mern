@@ -4,6 +4,13 @@
     align-items: center;
 }
 
+@mixin center-column {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
 @mixin logo-heading {
     font-family: $feature-font;
     color: $text-colour !important;
@@ -14,21 +21,26 @@
 @mixin heading {
     font-family: $text-font;
     color: $text-colour !important;
-    // font-weight: bold;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     line-height: 2.2rem;
 }
 
 @mixin p-text {
     font-family: $text-font !important;
     color: $text-colour;
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     line-height: 2.2rem;
 }
 
 @mixin light-p-text {
     @include p-text;
     color:  $light-text-colour !important;
+}
+
+@mixin hobbi-heading {
+    font-family: $feature-font;
+    letter-spacing: .1rem;
+    color: $signature-colour;
 }
 
 @mixin input {

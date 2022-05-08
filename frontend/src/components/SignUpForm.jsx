@@ -66,33 +66,33 @@ function SignUpForm() {
       
         <form className="signup-form__form" onSubmit={createUser}>
             <div className="signup-form__form-div">
-                <label className="signup-form__label" htmlFor="name">Name:</label>
-                <input className="signup-form__input" id="name" type="text" placeholder="Name..." onChange={(event) => setName(event.target.value)} required />
+                <label className="signup-form__label" htmlFor="signupName">Name:</label>
+                <input className="signup-form__input" id="signupName" type="text" placeholder="Name..." onChange={(event) => setName(event.target.value)} required />
             </div>
 
             <div className="signup-form__form-div">
-                <label className="signup-form__label" htmlFor="email">Email:</label>
-                <input className="signup-form__input" id="email" type="text" placeholder="Email..." onChange={(event) => setEmail(event.target.value)} required />
+                <label className="signup-form__label" htmlFor="signupEmail">Email:</label>
+                <input className="signup-form__input" id="signupEmail" type="text" placeholder="Email..." onChange={(event) => setEmail(event.target.value)} required />
             </div>
 
             <div className="signup-form__form-div">
-                <label className="signup-form__label" htmlFor="password">Password:</label>
-                <input className="signup-form__input" id="password" type="password" placeholder="Password..." onChange={(event) => setPassword(event.target.value)} required />
+                <label className="signup-form__label" htmlFor="signupPassword">Password:</label>
+                <input className="signup-form__input" id="signupPassword" type="password" placeholder="Password..." onChange={(event) => setPassword(event.target.value)} required />
             </div>
 
             <div className="signup-form__form-div">
-                <label className="signup-form__label" htmlFor="Age">Age:</label>
-                <input className="signup-form__input" id="Age" type="number" placeholder="Age..." onChange={(event) => setAge(event.target.value)} required />
+                <label className="signup-form__label" htmlFor="signupAge">Age:</label>
+                <input className="signup-form__input" id="signupAge" type="number" placeholder="Age..." onChange={(event) => setAge(event.target.value)} required />
             </div>
 
             <div className="signup-form__form-div">
-                <label className="signup-form__label" htmlFor="Bio">Bio:</label>
-                <input className="signup-form__input" id="Bio" type="text" placeholder="Bio..." onChange={(event) => setBio(event.target.value)} required />
+                <label className="signup-form__label" htmlFor="signupBio">Bio:</label>
+                <input className="signup-form__input" id="signupBio" type="text" placeholder="Bio..." onChange={(event) => setBio(event.target.value)} required />
             </div>
 
             <div className="signup-form__form-div">
-                <label className="signup-form__label" htmlFor="profilePicture">Profile picture:</label>
-                <input className="signup-form__input" id="profilePicture" type="file" placeholder="Photo link one..." onChange={(event) => setProfileUpload(event.target.files[0])} />
+                <label className="signup-form__label" htmlFor="signupProfilePicture">Profile picture:</label>
+                <input className="signup-form__input" id="signupProfilePicture" type="file" placeholder="Photo link one..." onChange={(event) => setProfileUpload(event.target.files[0])} />
             </div>
 
             <button className="signup-form__submit" type="submit">Sign up</button>

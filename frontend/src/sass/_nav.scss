@@ -4,8 +4,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-left: 3rem;
-    padding-right: 3rem;
+    padding-left: 5rem;
+    padding-right: 5rem;
     box-shadow: 0px 2px 5px rgb(207, 207, 207);
 
     &__heading {
@@ -19,6 +19,7 @@
     &__user-div {
         display: flex;
         align-items: center;
+        cursor: pointer;
     }
 
     &__profile-img {
@@ -26,18 +27,20 @@
         height: 4vh;
         border-radius: 360px;
         margin-right: 1rem;
+        object-fit: cover;
+        margin-left: 1rem;
     }
 
     &__btn-div {
         display: flex;
     }
 
-    &__login-btn {
+    &__outline-btn {
         @include outline-btn;
         margin-right: .5rem;
     }
 
-    &__register-btn {
+    &__solid-btn {
         @include solid-btn;
         margin-left: .5rem;
     }

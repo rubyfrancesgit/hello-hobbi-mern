@@ -1,0 +1,34 @@
+.how-it-works {
+    width: 100vw;
+    height: 50vh;
+    padding-left: 5rem;
+    padding-right: 2rem;
+    margin-bottom: 5rem;
+    @include center-column;
+
+    &__h2 {
+        @include heading;
+    }
+
+    &__p {
+        @include p-text;
+        text-align: center;
+    }
+
+    &__container {
+        margin-top: 5rem;
+        width: 100%;
+        display: flex;
+        justify-content: space-evenly;
+    }
+
+    &__div {
+        height: 15rem;
+        margin-right: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+        width: 50ch;
+    }
+}
