@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 
 // Styles
 import "./sass/style.scss";
+import UserProfile from "./pages/UserProfile";
 
 function App() {
   const user = useSelector((state) => state.user.value);
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/sign-up" element={ <SignUp /> } />
           <Route path="/" element={ <Index /> } />
+          <Route path="/user-profile" element={ user ? <UserProfile /> : <Index /> } />
         </Routes>
       </BrowserRouter>
     </div>

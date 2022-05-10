@@ -1,0 +1,57 @@
+.profile {
+    @include center;
+    margin-top: 5rem;
+
+    &__back-div {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    &__back-icon {
+        width: 1.2rem;
+        margin-right: .8rem;
+    }
+
+    &__info-container {
+        max-width: 90ch;
+        display: flex;
+        margin-top: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    &__img {
+        width: 10rem;
+        height: 10rem;
+        border-radius: 360px;
+        margin-right: 3rem;
+        object-fit: cover
+    }
+
+    &__heading {
+        @include heading;
+        margin-bottom: .5rem;
+    }
+
+    &__p {
+        @include p-text;
+    }
+
+    &__light-p {
+        @include light-p-text;
+    }
+
+    &__btn-div {
+        display: flex;
+        align-items: center;
+        margin-top: 1.5rem;
+    }
+
+    &__edit-profile {
+        @include btn-beginnings;
+        border: 1px solid $signature-colour;
+        color: $signature-colour;
+        background-color: white;
+        margin-right: 1rem;
+    }
+}

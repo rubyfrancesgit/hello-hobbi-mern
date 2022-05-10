@@ -26,11 +26,14 @@ function Nav() {
       
 
       {user && 
-      <div className="nav__user-div">
+      <div className="nav__right-div">
         <button className="nav__outline-btn">Teach a hobbi</button>
-        <img className="nav__profile-img" src={user.profilePictureLink} alt="Your profile picture" />
 
-        <p className="nav__p">{user.name}</p>
+        <Link to="/user-profile" className="nav__user-div">
+          <img className="nav__profile-img" src={user.profilePictureLink} alt="Your profile picture" />
+
+          <p className="nav__p">{user.name}</p>
+        </Link>
       </div>}
 
       {!user && 
