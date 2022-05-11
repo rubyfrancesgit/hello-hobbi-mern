@@ -27,7 +27,7 @@ function Nav() {
 
       {user && 
       <div className="nav__right-div">
-        <button className="nav__outline-btn">Teach a hobbi</button>
+        <Link to="/teach-a-hobby" className="nav__outline-btn">Teach a hobby</Link>
 
         <Link to="/user-profile" className="nav__user-div">
           <img className="nav__profile-img" src={user.profilePictureLink} alt="Your profile picture" />
