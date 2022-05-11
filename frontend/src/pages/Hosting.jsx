@@ -76,7 +76,7 @@ function Hosting() {
                         </form>
 
                         {user && 
-                            <button  className="hosting__btn">Create session</button>
+                            <Link to="/create-session"  className="hosting__btn">Create session</Link>
                         }
 
                         {!user && 

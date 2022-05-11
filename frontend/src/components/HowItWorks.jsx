@@ -10,12 +10,12 @@ function HowItWorks() {
 
             <div className="how-it-works__container">
                 <div className="how-it-works__div">
-                    <img className="how-it-works__img" src={bulbEducation} alt="lightbulb and graduation cap icons"></img>
+                    <img className="how-it-works__img how-it-works__bulb-education" src={bulbEducation} alt="lightbulb and graduation cap icons"></img>
                     <p className="how-it-works__p">Connect with hobbiests to learn new skills, hands-on & in-person.</p>
                 </div>
 
                 <div className="how-it-works__div">
-                    <img className="how-it-works__img" src={calendar} alt="calendar icon"></img>
+                    <img className="how-it-works__img how-it-works__calendar" src={calendar} alt="calendar icon"></img>
                     <p className="how-it-works__p">Flexible learning: Book sessions whenever it works best for you.</p>
                 </div>
 

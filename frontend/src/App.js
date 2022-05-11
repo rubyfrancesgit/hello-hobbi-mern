@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import "./sass/style.scss";
 import UserProfile from "./pages/UserProfile";
 import Hosting from "./pages/Hosting";
+import CreateSession from "./components/CreateSession";
 
 function App() {
   const user = useSelector((state) => state.user.value);
@@ -19,6 +20,7 @@ function App() {
           <Route path="/" element={ <Index /> } />
           <Route path="/user-profile" element={ user ? <UserProfile /> : <Index /> } />
           <Route path="/teach-a-hobby" element={ <Hosting />} />
+          <Route path="/create-session" element={ <CreateSession /> } />
         </Routes>
       </BrowserRouter>
     </div>

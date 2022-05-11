@@ -60,15 +60,6 @@ li {
     display: none !important;
 }
 
-.right-page {
-    float: right;
-    width: 80vw;
-    max-width: 80vw;
-    max-height: 100vh;
-    overflow-y: scroll;
-    overflow-x: hidden;
-}
-
 // media queries/responsive design
 @media only screen and (max-width: 600px) {
     .right-page {

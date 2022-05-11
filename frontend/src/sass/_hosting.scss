@@ -1,6 +1,6 @@
 .hosting {
-    width: 100%;
-    height: 100vh;
+    width: 100vw;
+    height: 90vh;
     @include center-column;
     justify-content: center;
     padding-top: 5rem;
