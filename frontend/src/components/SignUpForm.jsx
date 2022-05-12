@@ -33,7 +33,7 @@ function SignUpForm() {
         // Cloud store profile img
         const updloadIProfile = new FormData();
         updloadIProfile.append("file", profileUpload);
-        updloadIProfile.append("folder", "hobbiProfilePictures");
+        updloadIProfile.append("folder", "helloHobbi/profilePictures");
         updloadIProfile.append("upload_preset", "eqbewyzt");
     
         await Axios.post("https://api.cloudinary.com/v1_1/dum8n0mzw/image/upload", updloadIProfile)

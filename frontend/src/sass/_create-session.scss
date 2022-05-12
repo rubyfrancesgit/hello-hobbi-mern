@@ -9,17 +9,23 @@
         margin-bottom: 5rem;
     }
 
+    &__p {
+        @include p-text;
+        margin-bottom: 1rem;
+    }
+
+    &__label {
+        @include p-text;;
+    }
+
+    &__light-p {
+        @include light-p-text;
+    }
+
     &__form-container {
         width: 30%;
         min-width: 35rem;
         @include center-column;
-    }
-
-    &__name-city-div {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: 3rem
     }
 
     &__input {
@@ -38,24 +44,17 @@
         text-align: left;
     }
 
+    &__name-city-div {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 3rem
+    }
+
     &__form-div {
         width: 100%;
         margin-bottom: 3rem
 
-    }
-
-    &__p {
-        @include p-text;
-        padding-bottom: 1rem;
-    }
-
-    &__label {
-        @include p-text;
-        padding-bottom: 1rem;
-    }
-
-    &__light-p {
-        @include light-p-text;
     }
 
     &__text-area {
@@ -145,12 +144,6 @@
     &__img-upload-btn::-webkit-file-upload-button {
         @include outline-btn;
         @include p-text;
-        border: none;
-        padding-left: 12px;
-        padding-right: 12px;
-        padding-top: 6px;
-        padding-bottom: 6px;
-        margin-right: 1rem;
     }
 
     &__img-upload-btn-one {
