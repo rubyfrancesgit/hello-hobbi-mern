@@ -29,7 +29,7 @@ function LoginForm() {
               console.log('NOT logged in');
           } else {
               console.log("logged in");
-              dispatch(login({name: response.data.name, email: response.data.email, profilePictureLink: response.data.profilePictureLink, bio: response.data.bio, age: response.data.age}));
+              dispatch(login({name: response.data.name, id: response.data._id, email: response.data.email, profilePictureLink: response.data.profilePictureLink, bio: response.data.bio, age: response.data.age}));
 
               dispatch(setModalClasses({loginModalClasses: "hide", modalBackgroundClasses: "hide"}));
           }

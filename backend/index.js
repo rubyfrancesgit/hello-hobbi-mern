@@ -1,10 +1,11 @@
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose");
-const UserModel = require("./models/User");
 const bcrypt = require('bcryptjs');
 const cors = require("cors");
 const User = require("./models/User");
+// const UserModel = require("./models/User");
+const HobbiSession = require("./models/HobbiSession");
 const config = require("./config.json");
 
 app.use(express.json());
@@ -18,7 +19,7 @@ app.listen(3001, () => {
 
 // get users
 app.get("/getUsers", (req, res) => {
-    UserModel.find({}, (err, result) => {
+    User.find({}, (err, result) => {
         if (err) {
             res.json(err)
         } else {
@@ -82,5 +83,31 @@ app.post('/loginUser', (req, res) => {
         } else {
             res.send("User not found. Please register");
         }
+    });
+});
+
+app.post('/createSession', (req, res) => {
+    const hobbiSession = new HobbiSession({
+        _id: new mongoose.Types.ObjectId,
+        sessionName: req.body.sessionName,
+        city: req.body.city,
+        lessonPlan: req.body.lessonPlan,
+        whatsIncluded: req.body.whatsIncluded,
+        hostHouse: req.body.hostHouse,
+        learnerHouse: req.body.learnerHouse,
+        publicSetting: req.body.publicSetting,
+        extraGuest: req.body.extraGuest,
+        sessionPrice: req.body.sessionPrice,
+        extraGuestPrice: req.body.extraGuestPrice,
+        sessionImageLink: req.body.sessionImageLink,
+        hostId: req.body.hostId,
+    });
+
+    hobbiSession.save()
+    .then(result => {
+        console.log(hobbiSession, result);
+        res.send(result);
+    }).catch(err => {
+        res.send(err);
     });
 });

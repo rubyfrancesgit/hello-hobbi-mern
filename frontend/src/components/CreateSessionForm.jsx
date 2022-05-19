@@ -1,52 +1,86 @@
 import Axios from 'axios';
-import React, { useState } from 'react';
+import { useState } from 'react';
+import { useSelector } from 'react-redux';
 
-function CreateSession() {
+function CreateSessionForm() {
+    const user = useSelector((state) => state.user.value);
+
     const [sessionName, setSessionName] = useState("");
     const [city, setCity] = useState("");
     const [lessonPlan, setLessonPlan] = useState("");
     const [whatsIncluded, setWhatsIncluded] = useState("");
-    const [price, setPrice] = useState(0);
+    const [sessionPrice, setSessionPrice] = useState(0);
     const [extraGuestPrice, setExtraGuestPrice] = useState(0);
-    const [sessionImage, setSessionImage] = useState("");
+    const [sessionPhotoUpload, setSessionPhotoUpload] = useState("");
 
     let hostHouse;
     let learnerHouse;
     let publicSetting;
     let extraGuest;
     let sessionImageLink;
+    const hostId = user.id;
 
     // hiding & showing extra guests info 
     const hideShow = () => {
-        const noOfParticipants = document.getElementById("noOfParticipants");
-        const extraGuestPrice = document.getElementById("noOfParticipants");
+        // --- Not currently in use due to "An invalid form control with name='' is not focusable." Error... come back later ---
 
-        if(document.getElementById("yesExtraGuest").checked === true) {
-            document.getElementById("noOfParticipantsDiv").classList.remove("hide");
-            document.getElementById("extraGuestPriceDiv").classList.remove("hide");
+        // const noOfParticipants = document.getElementById("noOfParticipants");
+        // const extraGuestPrice = document.getElementById("noOfParticipants");
 
-            noOfParticipants.setAttribute('required', '');
-            extraGuestPrice.setAttribute('required', '');
-        }
+        // if(document.getElementById("yesExtraGuest").checked === true) {
+        //     document.getElementById("noOfParticipantsDiv").classList.remove("hide");
+        //     document.getElementById("extraGuestPriceDiv").classList.remove("hide");
 
-        if(document.getElementById("noExtraGuest").checked === true) {
-            document.getElementById("noOfParticipantsDiv").classList.add("hide");
-            document.getElementById("extraGuestPriceDiv").classList.add("hide");
+        //     noOfParticipants.setAttribute('required', '');
+        //     extraGuestPrice.setAttribute('required', '');
+        // }
 
-            noOfParticipants.removeAttribute('required');
-            extraGuestPrice.removeAttribute('required');
-        }
+        // if(document.getElementById("noExtraGuest").checked === true) {
+        //     document.getElementById("noOfParticipantsDiv").classList.add("hide");
+        //     document.getElementById("extraGuestPriceDiv").classList.add("hide");
+
+        //     noOfParticipants.removeAttribute('required');
+        //     extraGuestPrice.removeAttribute('required');
+        // }
     }
 
     const createSession = (event) => {
         event.preventDefault();
-        console.log('session');
+
+        // Getting values from form
+        if(document.getElementById("hostHouse").checked) {
+            hostHouse = true;
+        } else {
+            hostHouse = false;
+        }
+
+        if(document.getElementById("learnerHouse").checked) {
+            learnerHouse = true;
+        } else {
+            learnerHouse = false;
+        }
+
+        if(document.getElementById("publicSetting").checked) {
+            publicSetting = true;
+        } else {
+            publicSetting = false;
+        }
+
+        if(document.getElementById("yesExtraGuest").checked) {
+            extraGuest = true;
+        } else {
+            extraGuest = false;
+        }
+
+        console.log(sessionName, city, lessonPlan, whatsIncluded, sessionPrice, extraGuestPrice, hostHouse, learnerHouse, publicSetting, extraGuest);
+
+        photoCloudUpload();
     }
 
     const photoCloudUpload = async () => {
         // Cloud store session image
         const uploadSessionImg = new FormData();
-        uploadSessionImg.append("file", sessionImage);
+        uploadSessionImg.append("file", sessionPhotoUpload);
         uploadSessionImg.append("folder", "helloHobbi/sessionImages");
         uploadSessionImg.append("upload_preset", "eqbewyzt");
 
@@ -54,19 +88,30 @@ function CreateSession() {
         .then((response) => {
             console.log(response.data.secure_url);
             sessionImageLink = response.data.secure_url;
-        });
+            console.log(sessionImageLink)
 
-        storeSession();
+            storeSession();
+        });
     }
 
     const storeSession = () => {
+        console.log('store session');
         // upload session
         Axios.post("http://localhost:3001/createSession", {
             sessionName,
             city,
             lessonPlan,
             whatsIncluded,
-            
+            hostHouse,
+            learnerHouse,
+            publicSetting,
+            extraGuest,
+            sessionPrice,
+            extraGuestPrice,
+            sessionImageLink,
+            hostId
+        }).then((response) => {
+            console.log(response.data);
         });
     }
 
@@ -155,7 +200,7 @@ function CreateSession() {
             <div className="create-session__pricing-div">
                 <div className="create-session__pricing-input-div">
                     <p className="create-session__light-p">$</p>
-                    <input className="create-session__number-input" id="sessionPrice" type="number"  onChange={(event) => setPrice(event.target.value)} required />
+                    <input className="create-session__number-input" id="sessionPrice" type="number"  onChange={(event) => setSessionPrice(event.target.value)} required />
                     <p className="create-session__light-p">per session</p>
                 </div>
 
@@ -170,7 +215,7 @@ function CreateSession() {
         <div className="create-session__photo-upload-container">
             <p className="create-session__p">Session images</p>
 
-            <input className="create-session__img-upload-btn create-session__img-upload-btn-one" id="sessionPicOne" type="file" accept="image/jpg, image/png,image/jpeg" />
+            <input className="create-session__img-upload-btn create-session__img-upload-btn-one" id="sessionPicOne" type="file" accept="image/jpg, image/png,image/jpeg" onChange={(event) => setSessionPhotoUpload(event.target.files[0])} />
         </div>
 
         <div className="create-session__photo-display-container hide">
@@ -180,42 +225,9 @@ function CreateSession() {
 
         <button type="submit">Create session</button>
     </form>
-      
-      {/* <form className="create-session__form" onSubmit={createUser}>
-          <div className="create-session__form-div">
-              <label className="create-session__label" htmlFor="createSessionName">Session name:</label>
-              <input className="create-session__input" id="createSessionName" type="text" placeholder="Session name..." onChange={(event) => setSessionName(event.target.value)} required />
-          </div>
-
-          <div className="create-session__form-div">
-              <label className="create-session__label" htmlFor="createSessionLessonPlan">Lesson plan:</label>
-              <input className="create-session__input" id="createSessionLessonPlan" type="textarea" placeholder="Lesson plan..." onChange={(event) => setLessonPlan(event.target.value)} required />
-          </div>
-
-          <div className="create-session__form-div">
-              <label className="create-session__label" htmlFor="signupPassword">Password:</label>
-              <input className="create-session__input" id="signupPassword" type="password" placeholder="Password..." onChange={(event) => setPassword(event.target.value)} required />
-          </div>
-
-          <div className="create-session__form-div">
-              <label className="create-session__label" htmlFor="signupAge">Age:</label>
-              <input className="create-session__input" id="signupAge" type="number" placeholder="Age..." onChange={(event) => setAge(event.target.value)} required />
-          </div>
-
-          <div className="create-session__form-div">
-              <label className="create-session__label" htmlFor="signupBio">Bio:</label>
-              <input className="create-session__input" id="signupBio" type="text" placeholder="Bio..." onChange={(event) => setBio(event.target.value)} required />
-          </div>
-
-          <div className="create-session__form-div">
-              <label className="create-session__label" htmlFor="signupProfilePicture">Profile picture:</label>
-              <input className="create-session__input" id="signupProfilePicture" type="file" placeholder="Photo link one..." onChange={(event) => setProfileUpload(event.target.files[0])} />
-          </div>
-
-          <button className="create-session__submit" type="submit">Sign up</button>
-      </form> */}
+  
     </div>
   )
 }
 
-export default CreateSession
+export default CreateSessionForm;

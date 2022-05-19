@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const UserSchema = new mongoose.Schema({
+const hobbiSessionSchema = new mongoose.Schema({
     sessionName: {
         type: String,
         rerquired: true
@@ -15,6 +15,10 @@ const UserSchema = new mongoose.Schema({
     },
     whatsIncluded: {
         type: String,
+        required: true
+    },
+    hostHouse: {
+        type: Boolean,
         required: true
     },
     learnerHouse: {
@@ -36,9 +40,17 @@ const UserSchema = new mongoose.Schema({
     extraGuestPrice: {
         type: Number
     },
+    sessionImageLink: {
+        type: String,
+        required: true
+    },
     hostId: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'User',
         required: true
     }
-})
+});
+
+// const HobbiSession = mongoose.model("hobbiSession", hobbiSessionSchema);
+// module.exports = HobbiSession;
+module.exports = mongoose.model("HobbiSession", hobbiSessionSchema);
