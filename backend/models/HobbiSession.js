@@ -53,4 +53,6 @@ const hobbiSessionSchema = new mongoose.Schema({
 
 // const HobbiSession = mongoose.model("hobbiSession", hobbiSessionSchema);
 // module.exports = HobbiSession;
-module.exports = mongoose.model("HobbiSession", hobbiSessionSchema);
+// module.exports = mongoose.model("HobbiSession", hobbiSessionSchema);
+const HobbiSession = mongoose.model("Hobbi", hobbiSessionSchema);
+module.exports = HobbiSession;

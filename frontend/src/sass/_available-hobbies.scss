@@ -1,0 +1,27 @@
+.available-hobbies {
+    width: 100vw;
+    padding-top: 8rem;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    padding-bottom: 8rem;
+
+    &__heading {
+        @include heading;
+        margin-bottom: 4rem;
+    }
+
+    &__img {
+        width: 20rem;
+        height: 20rem;
+        border-radius: 5px;
+        object-fit: cover;
+    }
+
+    &__session-name {
+        @include p-text;
+    }
+
+    &__city {
+        @include light-p-text;
+    }
+}

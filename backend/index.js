@@ -28,6 +28,22 @@ app.get("/getUsers", (req, res) => {
     });
 });
 
+// get hobbies
+app.get("/allHobbies", (req, res) => {
+    HobbiSession.find({}, (err, result) => {
+        if (err) {
+            res.json(err)
+        } else {
+            res.json(result)
+        }
+    });
+});
+// app.get("/allHobbies", (req, res) => {
+//     HobbiSession.find().then(result => {
+//         res.send(result);
+//     });
+// });
+
 // check if user email is taken
 app.post("/checkUserEmail", (req, res) => {
     User.findOne({

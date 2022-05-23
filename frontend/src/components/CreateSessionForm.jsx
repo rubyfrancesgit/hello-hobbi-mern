@@ -24,12 +24,12 @@ function CreateSessionForm() {
     const hideShow = () => {
         // --- Not currently in use due to "An invalid form control with name='' is not focusable." Error... come back later ---
 
-        // const noOfParticipants = document.getElementById("noOfParticipants");
-        // const extraGuestPrice = document.getElementById("noOfParticipants");
+        const noOfParticipants = document.getElementById("noOfParticipants");
+        const extraGuestPrice = document.getElementById("noOfParticipants");
 
-        // if(document.getElementById("yesExtraGuest").checked === true) {
-        //     document.getElementById("noOfParticipantsDiv").classList.remove("hide");
-        //     document.getElementById("extraGuestPriceDiv").classList.remove("hide");
+        if(document.getElementById("yesExtraGuest").checked === true) {
+            document.getElementById("noOfParticipantsDiv").classList.remove("hide");
+            document.getElementById("extraGuestPriceDiv").classList.remove("hide");
 
         //     noOfParticipants.setAttribute('required', '');
         //     extraGuestPrice.setAttribute('required', '');
@@ -41,7 +41,7 @@ function CreateSessionForm() {
 
         //     noOfParticipants.removeAttribute('required');
         //     extraGuestPrice.removeAttribute('required');
-        // }
+        }
     }
 
     const createSession = (event) => {
@@ -88,7 +88,6 @@ function CreateSessionForm() {
         .then((response) => {
             console.log(response.data.secure_url);
             sessionImageLink = response.data.secure_url;
-            console.log(sessionImageLink)
 
             storeSession();
         });
@@ -206,7 +205,7 @@ function CreateSessionForm() {
 
                 <div className="create-session__pricing-input-div hide" id="extraGuestPriceDiv">
                     <p className="create-session__light-p">$</p>
-                    <input className="create-session__number-input" id="extraGuestPrice" type="number"  onChange={(event) => setExtraGuestPrice(event.target.value)} required  />
+                    <input className="create-session__number-input" id="extraGuestPrice" type="number"  onChange={(event) => setExtraGuestPrice(event.target.value)}  />
                     <p className="create-session__light-p">per extra guest</p>
                 </div>
             </div>
